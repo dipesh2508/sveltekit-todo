@@ -3,9 +3,9 @@ import { writable } from 'svelte/store';
 export const todos = writable([]);
 
 export const addTodo = (text) => {
-    todos.update((data) => {
-        const newTodo = [...data, { text, completed: false, id: Date.now() }];
-        return newTodo;
+    todos.update((cur) => {
+        const newTodos = [...cur, { text, completed: false, id: Date.now() }];
+        return newTodos;
     });
 };
 

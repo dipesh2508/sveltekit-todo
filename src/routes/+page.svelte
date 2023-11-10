@@ -1,6 +1,6 @@
 <script>
     import TodoForm from '../components/todo-form.svelte';
-    import Todo from '../components/todo-form.svelte';
+    import Todo from '../components/todo.svelte';
     import { todos } from '../stores/todoStore'
   </script>
   
@@ -10,8 +10,8 @@
           My Todos
       </h1>
       <TodoForm />
-      {#each $todos as todo, index}
-        <Todo todo={todo} index={index} />
+      {#each $todos as todo}
+        <Todo todo={todo} index={todo.id} />
       {/each}
   </main>
     
