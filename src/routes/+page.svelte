@@ -10,8 +10,8 @@
           My Todos
       </h1>
       <TodoForm />
-      {#each $todos as todo}
-        <Todo todo={todo} index={todo.id} />
+      {#each $todos as todo (todo.id)}
+        <Todo todo={todo}/>
       {/each}
   </main>
     

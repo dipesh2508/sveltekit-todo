@@ -10,16 +10,18 @@ export const loadTodos = async () => {
 	}
 
 	todos.set(data);
-};
+}
 
-export const addTodo = async (text, user_id = 'text') => {
+loadTodos();
+
+export const addTodo = async (text, user_id) => {
 	const { data, error } = await supabase.from('todos').insert([{ text , user_id}]);
 
 	if (error) {
 		return console.error(error);
 	}
 
-	todos.update((cur) => [...cur, data[0]]);
+	todos.update(cur => [...cur, data[0]]);
 };
 
 export const deleteTodo = async(id) => {
