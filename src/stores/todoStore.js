@@ -12,10 +12,8 @@ export const loadTodos = async () => {
 	todos.set(data);
 }
 
-loadTodos();
-
-export const addTodo = async (text, user_id) => {
-	const { data, error } = await supabase.from('todos').insert([{ text , user_id}]);
+export const addTodo = async (text, completed) => {
+	const { data, error } = await supabase.from('todos').insert([{ text , completed: false}]);
 
 	if (error) {
 		return console.error(error);
@@ -56,3 +54,5 @@ export const toggleTodoCompleted = async(id, currentState) => {
 		return todos;
 	});
 };
+
+loadTodos();
