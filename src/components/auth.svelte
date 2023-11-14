@@ -6,8 +6,9 @@
 
 	const handleLogin = async () => {
 		try {
+			loading = true;
 			console.log(email);
-			const { error } = await supabase.auth.signIn({ email });
+			const { error } = await supabase.auth.signUp({ email });
 
 			if (error) {
 				throw error;
@@ -33,11 +34,15 @@
 			name="email"
 			class="appearance-none shadow-sm border border-slate-200 p-2 focus:outline-none focus:border-slate-500 rounded-lg"
 			type="email"
-            placeholder="Your email"
-            bind:value={email}
+			placeholder="Your email"
+			bind:value={email}
 		/>
 	</div>
-    <button type="submit" class="w-full shadow-sm rounded bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-4">
-Log In
-    </button>
+	<button
+		type="submit"
+		class="w-full shadow-sm rounded bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-4"
+        disabled={loading}
+	>
+		Log In
+	</button>
 </form>
